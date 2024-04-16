@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SignIn from './pages/connexion/signIn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
       <Header />
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path='/sign-in' element={<SignIn />} />
         </Routes>
       <Footer />
     </Router>
