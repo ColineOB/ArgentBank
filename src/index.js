@@ -7,18 +7,25 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/connexion/signIn';
+import store from './Redux/store';
+
+//redux
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <Router>
-      <Header />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path='/sign-in' element={<SignIn />} />
-        </Routes>
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Header />
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path='/sign-in' element={<SignIn />} />
+          </Routes>
+        <Footer />
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 
