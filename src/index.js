@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/connexion/signIn';
+import User from './pages/user/user';
 import store from './Redux/store';
 
 //redux
@@ -22,6 +23,7 @@ root.render(
           <Routes>
             <Route path="/" element={<App />} />
             <Route path='/sign-in' element={<SignIn />} />
+            <Route path='/user' element={<User />} />
           </Routes>
         <Footer />
       </Router>

@@ -2,19 +2,38 @@ import logo from '../../assets/img/argentBankLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../Redux/slice/login/loginSlice'
 import './header.css'
 
 const Header = () => {
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.login.token);
 
+    
     return (
         <div className="header">
             <Link to='/'>
                 <img className='header_logo' alt='logo' src={logo} />
             </Link>
+            {token?
+            <div className='header_connexion'>
+                <Link to="/user" className='header_connexion'>
+                    <FontAwesomeIcon icon={faUserCircle} size='1x' />
+                    <p>Tony</p>
+                </Link>
+                <button onClick={() => dispatch(logout())}>
+                    <FontAwesomeIcon icon={faUserCircle} size='1x' />
+                    <p>Sign Out</p>
+                </button>
+            </div>
+            :
             <Link to="/sign-in" className='header_connexion'>
                 <FontAwesomeIcon icon={faUserCircle} size='1x' />
                 <p>Sign In</p>
             </Link>
+            }
+            
         </div>
     )
 }

@@ -1,8 +1,8 @@
 
-export const URL = "http://localhost:3001/"
+export const URL = "http://localhost:3001/api/v1/"
 
 //LOGIN
-export const POST_LOGIN = "api/user/login"
-export const POST_SIGNUP = "api/user/signup"
-export const POST_PROFIL = "api/user/profile"
-export const PUT_PROFIL = "api/user/profil"
+export const POST_LOGIN = "user/login"
+export const POST_SIGNUP = "user/signup"
+export const POST_PROFIL = "user/profile"
+export const PUT_PROFIL = "user/profil"

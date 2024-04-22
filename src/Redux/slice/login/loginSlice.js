@@ -1,19 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as url from '../../api/addressApi'
+import axios from "axios";
 
 export const postLogin = createAsyncThunk(
     "login/post",
-    async ({data})  => {
+    async (data, thunkApi)  => {
         try {
-            // const response = await fetch(url.URL+url.POST_LOGIN, {
-            //     method: 'POST',
-            //     body: JSON.stringify(data)
-            // })
-            // return response.json()
-            return console.log(data, 'slice');
-        } catch(error) {
-            console.log('error :', error);
+            const response = await axios.post(url.URL+url.POST_LOGIN, data)
+            // console.log(response);
+            return response.data.body.token;
+        } catch (error) {
+            console.log("catch :", error.response);
+            if (error.response.status === 400 || error.response.status === 500) {
+                console.log("createAsyncThunk :", error.response);
+                return thunkApi.rejectWithValue(error.response.data)
+            }
+            throw error
         }
+            
     }
 )
 
@@ -24,7 +28,11 @@ const loginSlice = createSlice({
         loading: 'idle',
         error: null,
     },
-    reducers: {},
+    reducers: {
+        logout: state => {
+
+        }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(postLogin.pending, (state) => {
@@ -36,10 +44,12 @@ const loginSlice = createSlice({
             state.error = null;
         })
         .addCase(postLogin.rejected, (state, action) => {
+            console.log("postLogin.rejected :", action);
             state.loading = "error";
-            state.error = action.error.message;
+            state.error = action.payload.status;
         });
     },
 });
 
+export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;
