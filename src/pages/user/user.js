@@ -1,10 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import { postProfil } from '../../Redux/slice/user/profilSlice'
 
 import './user.css'
 
 function User(){
+    const dispatch = useDispatch()
     const token = useSelector((state) => state.login.token);
+
+    useEffect(()=>{
+        dispatch(postProfil(token))
+    })
 
     
     if(!token){

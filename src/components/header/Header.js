@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout } from '../../Redux/slice/login/loginSlice'
+import { logout } from '../../Redux/slice/user/loginSlice'
 import './header.css'
 
 const Header = () => {

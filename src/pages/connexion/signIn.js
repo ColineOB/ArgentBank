@@ -3,17 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { postLogin} from '../../Redux/slice/login/loginSlice'
+import { postLogin} from '../../Redux/slice/user/loginSlice'
 import { Navigate } from 'react-router-dom'
 
 function SignIn(){
     const dispatch = useDispatch()
+    // state
     const [username, setUsername] = useState('tony@stark.com');
     const [password, setPassword] = useState('password123');
-    const token = useSelector((state) => state.login.token);
-    const error = useSelector((state) => state.login.error);
     const [errorVisible, setErrorVisible] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    // store
+    const token = useSelector((state) => state.login.token);
+    const error = useSelector((state) => state.login.error);
 
     useEffect(()=> {
         console.log(error);
