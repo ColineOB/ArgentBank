@@ -2,7 +2,7 @@ import './signIn.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { postLogin} from '../../Redux/slice/user/loginSlice'
 import { Navigate } from 'react-router-dom'
 
@@ -11,27 +11,19 @@ function SignIn(){
     // state
     const [username, setUsername] = useState('tony@stark.com');
     const [password, setPassword] = useState('password123');
-    const [errorVisible, setErrorVisible] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
     // store
     const token = useSelector((state) => state.login.token);
     const error = useSelector((state) => state.login.error);
 
-    useEffect(()=> {
-        console.log(error);
-         if (error) {
-            setErrorVisible(true)
-            if (error === 400) {
-                setErrorMessage('Username or password incorrect.')
-            } else if (error === 500) {
-                setErrorMessage('Internal Server Error. Please try again later.')
-            }
-        }
-    },[error])
+    let errorMsg = ''
+    if (error === 400) {
+        errorMsg = 'Username or password incorrect.'
+    } else if (error === 500) {
+        errorMsg = 'Internal Server Error. Please try again later.'
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrorVisible(false);
         dispatch(postLogin({ "email": username, "password": password }))
     }
     if(token){
@@ -55,7 +47,7 @@ function SignIn(){
                     <input type="checkbox" id="remember-me" />
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
-                {errorVisible && <div className="error-message">{errorMessage}</div>}
+                {errorMsg && <div className="error-message">{errorMsg}</div>}
                 <button onClick={handleSubmit} className="sign-in-button">Sign In</button>
                 </form>
             </section>

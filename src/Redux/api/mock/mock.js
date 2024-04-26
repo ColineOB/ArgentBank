@@ -8,7 +8,7 @@ const TOTAL_ARGENT_BANK = [
 
 const TRANSACTION_CHECKING = [
     {
-        id: 1,
+        id: 6,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -18,7 +18,7 @@ const TRANSACTION_CHECKING = [
         Balance: 2082.79
     },
     {
-        id: 2,
+        id: 5,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -28,7 +28,7 @@ const TRANSACTION_CHECKING = [
         Balance: 2087.79
     },
     {
-        id: 3,
+        id: 4,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -48,7 +48,7 @@ const TRANSACTION_CHECKING = [
         Balance: 2117.79
     },
     {
-        id: 4,
+        id: 2,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -58,7 +58,7 @@ const TRANSACTION_CHECKING = [
         Balance: 2147.79
     },
     {
-        id: 5,
+        id: 1,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -71,7 +71,7 @@ const TRANSACTION_CHECKING = [
 
 const TRANSACTION_SAVINGS = [
     {
-        id: 1,
+        id: 6,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -81,7 +81,7 @@ const TRANSACTION_SAVINGS = [
         Balance: 10933.42
     },
     {
-        id: 2,
+        id: 5,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -91,7 +91,7 @@ const TRANSACTION_SAVINGS = [
         Balance: 10938.42
     },
     {
-        id: 3,
+        id: 4,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -111,7 +111,7 @@ const TRANSACTION_SAVINGS = [
         Balance: 10988.42
     },
     {
-        id: 4,
+        id: 2,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -121,7 +121,7 @@ const TRANSACTION_SAVINGS = [
         Balance: 11028.42
     },
     {
-        id: 5,
+        id: 1,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -134,7 +134,7 @@ const TRANSACTION_SAVINGS = [
 
 const TRANSACTION_CARD = [
     {
-        id: 1,
+        id: 6,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -144,7 +144,7 @@ const TRANSACTION_CARD = [
         Balance: 189.30
     },
     {
-        id: 2,
+        id: 5,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -154,7 +154,7 @@ const TRANSACTION_CARD = [
         Balance: 199.30
     },
     {
-        id: 3,
+        id: 4,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -174,7 +174,7 @@ const TRANSACTION_CARD = [
         Balance: 249.30
     },
     {
-        id: 4,
+        id: 2,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',
@@ -184,7 +184,7 @@ const TRANSACTION_CARD = [
         Balance: 289.30
     },
     {
-        id: 5,
+        id: 1,
         date:'june 20th, 2020',
         description:'Golden Sun Backery',
         type: 'Electronic',

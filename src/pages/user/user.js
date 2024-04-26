@@ -1,59 +1,45 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { postProfil } from '../../Redux/slice/user/profilSlice'
+import EditProfil from '../../components/editProfil/EditProfil';
+import { postAccount } from '../../Redux/slice/account/accountSlice';
 
 import './user.css'
+import { useEffect, useState } from 'react';
+import Account from '../../components/account/Account';
 
 function User(){
     const dispatch = useDispatch()
+    const [totalChecking, setTotalChecking] = useState('');
+    const [totalSavings, setTotalSavings] = useState('');
+    const [totalCreditCard, setTotalCreditCard] = useState('');
+
     const token = useSelector((state) => state.login.token);
+    const total = useSelector((state) => state.account.total);
 
-    useEffect(()=>{
-        dispatch(postProfil(token))
+    useEffect(() => {
+        dispatch(postAccount(token))
     })
-
     
+    //TODO To modify after having the API route
+    useEffect(() => {
+        if (total) {
+            setTotalChecking((total[0].checking).toLocaleString('en'))
+            setTotalSavings((total[0].savings).toLocaleString('en'))
+            setTotalCreditCard((total[0].credit).toLocaleString('en'))
+        }
+    }, [total])
+
     if(!token){
         return <Navigate to='/sign-in' />
      }
     return(
     <main className="main bg-dark">
-    <div className="headerUser">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button className="edit-button">Edit Name</button>
-    </div>
+    <EditProfil />
     <h2 className="sr-only">Accounts</h2>
-    <section className="account">
-        <div className="account-content-wrapper">
-            <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-            <p className="account-amount">$2,082.79</p>
-            <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
-        </div>
-    </section>
-    <section className="account">
-            <div className="account-content-wrapper">
-            <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-            <p className="account-amount">$10,928.42</p>
-            <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
-        </div>
-    </section>
-        <section className="account">
-            <div className="account-content-wrapper">
-                <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-                <p className="account-amount">$184.30</p>
-                <p className="account-amount-description">Current Balance</p>
-            </div>
-            <div className="account-content-wrapper cta">
-                <button className="transaction-button">View transactions</button>     
-            </div>
-        </section>
+    <Account name='Checking (x8349)' argent={totalChecking}  balance='Available' state='checking' />
+    <Account name='Savings (x6712)' argent={totalSavings}  balance='Available' state='savings' />
+    <Account name='Credit Card (x8349)' argent={totalCreditCard}  balance='Current' state='creditCard' />
+    
     </main>
     )
 }

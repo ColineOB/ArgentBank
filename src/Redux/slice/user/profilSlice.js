@@ -6,8 +6,8 @@ export const postProfil = createAsyncThunk(
     "profil/post",
     async (token, thunkApi)  => {
         try {
-            const response = await axios.post(url.URL+url.POST_PROFIL, {}, {headers: {
-                'Authorization': `Basic ${token}`
+            const response = await axios.post(url.URL+url.POST_PROFIL, undefined, {headers: {
+                'Authorization': `Bearer ${token}`
             }})
             return response.data.body;
         } catch (error) {
@@ -24,10 +24,11 @@ export const postProfil = createAsyncThunk(
 
 export const putProfil = createAsyncThunk(
     "profil/put",
-    async (token, data, thunkApi)  => {
+    async ( data, thunkApi)  => {
         try {
+            console.log("data:", data, "toeken:", token);
             const response = await axios.put(url.URL+url.PUT_PROFIL, data, {headers: {
-                'Authorization': `Basic ${token}`
+                'Authorization': `Bearer ${token}`
             }})
             return response.data.body;
         } catch (error) {

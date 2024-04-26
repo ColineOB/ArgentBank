@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import loginReducer from './slice/user/loginSlice'
 import profilReducer from './slice/user/profilSlice'
+import accountReducer from './slice/account/accountSlice';
 
 const combinedReducer = combineReducers({
   login: loginReducer,
-  profil: profilReducer
+  profil: profilReducer,
+  account: accountReducer
 })
 
 const rootReducer = (state, action) => {
