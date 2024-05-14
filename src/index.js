@@ -12,6 +12,7 @@ import store from './Redux/store';
 
 //redux
 import { Provider } from 'react-redux';
+import TokenChecker from './utils/TokenChecker';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,6 +20,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        <TokenChecker />
         <Header />
           <Routes>
             <Route path="/" element={<App />} />

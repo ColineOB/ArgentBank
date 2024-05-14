@@ -2,16 +2,18 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as url from '../../api/addressApi'
 import axios from "axios";
 
+
 export const postProfil = createAsyncThunk(
     "profil/post",
-    async (token, thunkApi)  => {
+    async (_,thunkApi)  => {
         try {
+            const token = thunkApi.getState().login.token;
             const response = await axios.post(url.URL+url.POST_PROFIL, undefined, {headers: {
                 'Authorization': `Bearer ${token}`
             }})
             return response.data.body;
         } catch (error) {
-            console.log("catch :", error.response);
+            console.log("catch :", error);
             if (error.response.status === 400 || error.response.status === 500) {
                 console.log("createAsyncThunk :", error.response);
                 return thunkApi.rejectWithValue(error.response.data)
@@ -26,7 +28,7 @@ export const putProfil = createAsyncThunk(
     "profil/put",
     async ( data, thunkApi)  => {
         try {
-            console.log("data:", data, "toeken:", token);
+            const token = thunkApi.getState().login.token;
             const response = await axios.put(url.URL+url.PUT_PROFIL, data, {headers: {
                 'Authorization': `Bearer ${token}`
             }})

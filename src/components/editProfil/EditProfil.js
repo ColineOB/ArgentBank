@@ -11,11 +11,10 @@ const EditProfil = () => {
  const [userFirstName, setUserFirstName] = useState('')
  const [userLastName, setUserLastName] = useState('')
     //store
- const token = useSelector((state) => state.login.token);
  const profil = useSelector((state) => state.profil.profil)
 
  useEffect(()=>{
-     dispatch(postProfil(token))
+     dispatch(postProfil())
  },[])
  
 useEffect(() => {
@@ -27,8 +26,7 @@ useEffect(() => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(token);
-    dispatch(putProfil({"firstName": userFirstName, "lastName": userLastName, "token": token }))
+    dispatch(putProfil({"firstName": userFirstName, "lastName": userLastName }))
 }
 
     if(edit){
