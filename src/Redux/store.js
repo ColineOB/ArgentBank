@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import loginReducer from './slice/user/loginSlice'
 import profilReducer from './slice/user/profilSlice'
 import accountReducer from './slice/account/accountSlice';
+import transactionsReducer from './slice/account/transactionsSlice';
 
 
 const localStorageMiddleware = store => next => action => {
@@ -16,7 +17,8 @@ const localStorageMiddleware = store => next => action => {
 const combinedReducer = combineReducers({
   login: loginReducer,
   profil: profilReducer,
-  account: accountReducer
+  account: accountReducer,
+  transactions: transactionsReducer
 })
 
 const rootReducer = (state, action) => {

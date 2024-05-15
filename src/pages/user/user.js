@@ -12,7 +12,7 @@ function User(){
     const [totalChecking, setTotalChecking] = useState('');
     const [totalSavings, setTotalSavings] = useState('');
     const [totalCreditCard, setTotalCreditCard] = useState('');
-
+    //state
     const token = useSelector((state) => state.login.token);
     const total = useSelector((state) => state.account.total);
 
@@ -37,7 +37,7 @@ function User(){
     <EditProfil />
     <h2 className="sr-only">Accounts</h2>
     <Account name='Checking (x8349)' argent={totalChecking}  balance='Available' state='checking' />
-    <Account name='Savings (x6712)' argent={totalSavings}  balance='Available' state='savings' />
+    <Account name='Savings (x6712)' argent={totalSavings}  balance='Available' state='savings'/>
     <Account name='Credit Card (x8349)' argent={totalCreditCard}  balance='Current' state='creditCard' />
     
     </main>

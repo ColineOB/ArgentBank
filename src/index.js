@@ -13,6 +13,7 @@ import store from './Redux/store';
 //redux
 import { Provider } from 'react-redux';
 import TokenChecker from './utils/TokenChecker';
+import Transations from './pages/transactions/transactions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +27,8 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path='/sign-in' element={<SignIn />} />
             <Route path='/user' element={<User />} />
+            <Route path='/transactions' element={<Transations />}>
+            </Route>
           </Routes>
         <Footer />
       </Router>

@@ -7,27 +7,27 @@ import './editProfil.css'
 const EditProfil = () => {
     const dispatch = useDispatch()
     //state
- const [edit, setEdit] = useState(false)
- const [userFirstName, setUserFirstName] = useState('')
- const [userLastName, setUserLastName] = useState('')
-    //store
- const profil = useSelector((state) => state.profil.profil)
+    const [edit, setEdit] = useState(false)
+    const [userFirstName, setUserFirstName] = useState('')
+    const [userLastName, setUserLastName] = useState('')
+        //store
+    const profil = useSelector((state) => state.profil.profil)
 
- useEffect(()=>{
-     dispatch(postProfil())
- },[])
- 
-useEffect(() => {
-    if(profil) {
-        setUserFirstName(profil.firstName);
-        setUserLastName(profil.lastName)
+    useEffect(()=>{
+        dispatch(postProfil())
+    },[])
+    
+    useEffect(() => {
+        if(profil) {
+            setUserFirstName(profil.firstName);
+            setUserLastName(profil.lastName)
+        }
+    },[profil])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(putProfil({"firstName": userFirstName, "lastName": userLastName }))
     }
-},[profil])
-
-const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(putProfil({"firstName": userFirstName, "lastName": userLastName }))
-}
 
     if(edit){
         return (
