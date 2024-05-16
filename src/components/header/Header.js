@@ -5,10 +5,20 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../Redux/slice/user/loginSlice'
 import './header.css'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
     const dispatch = useDispatch()
+    const [userFirstName, setUserFirstName] = useState('')
     const token = useSelector((state) => state.login.token);
+        //store
+    const profil = useSelector((state) => state.profil.profil)
+
+    useEffect(() => {
+        if(profil) {
+            setUserFirstName(profil.firstName);
+        }
+    },[profil])
 
     
     return (
@@ -20,7 +30,7 @@ const Header = () => {
             <div className='header_connexion'>
                 <Link to="/user" className='header_connexion'>
                     <FontAwesomeIcon icon={faUserCircle} size='1x' />
-                    <p>Tony</p>
+                    <p>{userFirstName}</p>
                 </Link>
                 <button onClick={() => dispatch(logout())}>
                     <FontAwesomeIcon icon={faUserCircle} size='1x' />

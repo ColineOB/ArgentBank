@@ -27,6 +27,8 @@ const EditProfil = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(putProfil({"firstName": userFirstName, "lastName": userLastName }))
+        dispatch(postProfil())
+        setEdit(false)
     }
 
     if(edit){
