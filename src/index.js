@@ -9,11 +9,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/connexion/signIn';
 import User from './pages/user/user';
 import store from './Redux/store';
+import NotFound from './pages/error/notFound';
+import Transations from './pages/transactions/transactions';
+import TokenChecker from './utils/TokenChecker';
 
 //redux
 import { Provider } from 'react-redux';
-import TokenChecker from './utils/TokenChecker';
-import Transations from './pages/transactions/transactions';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -28,6 +29,7 @@ root.render(
             <Route path='/sign-in' element={<SignIn />} />
             <Route path='/user' element={<User />} />
             <Route path='/transactions' element={<Transations />}>
+            <Route path='*' element={<NotFound />}/>
             </Route>
           </Routes>
         <Footer />

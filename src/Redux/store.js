@@ -5,11 +5,11 @@ import accountReducer from './slice/account/accountSlice';
 import transactionsReducer from './slice/account/transactionsSlice';
 
 
-const localStorageMiddleware = store => next => action => {
+const sessionStorageMiddleware = store => next => action => {
   const result = next(action);
   if (action.type === 'login/post/fulfilled') {
     const token = action.payload;
-    localStorage.setItem('token', token); 
+    sessionStorage.setItem('token', token); 
   }
   return result;
 };
@@ -24,7 +24,7 @@ const combinedReducer = combineReducers({
 const rootReducer = (state, action) => {
   if (action.type === 'login/logout') {
     state = undefined;
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
   return combinedReducer(state, action);
 };
@@ -32,7 +32,7 @@ const rootReducer = (state, action) => {
 // TODO: devtools to set to false at production time
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(localStorageMiddleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(sessionStorageMiddleware),
   devTools: true,
 })
 
