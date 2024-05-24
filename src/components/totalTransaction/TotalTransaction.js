@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom';
+import './totalTransaction.css'
 
 const TotalTransaction = () => {
     const [queryParameter] = useSearchParams();
@@ -19,10 +20,10 @@ const TotalTransaction = () => {
     return (
         <>
              {account ? (
-        <div>
-            <h1>{account.name}</h1>
-            <p>Argent: ${account.argent.toLocaleString('en')}</p>
-            <p>Balance: {account.balance}</p>
+            <div className='totalTransaction'>
+                <h1>Argent Bank {account.name}</h1>
+                <p className='argent'>${account.argent.toLocaleString('en')}</p>
+                <p className='balance'>{account.balance} Balance</p>
             </div>
         ) : (
             <p>No account found for the specified type.</p>

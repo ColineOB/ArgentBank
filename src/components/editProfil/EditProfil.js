@@ -35,10 +35,14 @@ const EditProfil = () => {
         return (
             <div className="headerUser">
                 <h1>Welcome back</h1>
-                <input onChange={(e) => setUserFirstName(e.target.value)} type="text" id="firstname" value={userFirstName} />
-                <input onChange={(e) => setUserLastName(e.target.value)} type="text" id="lastname" value={userLastName} />
-                <button onClick={handleSubmit} className="save-button">Save</button>
-                <button onClick={() => setEdit(false)} className="cancel-button">Cancel</button>
+                <div>
+                    <input onChange={(e) => setUserFirstName(e.target.value)} type="text" id="firstname" value={userFirstName} />
+                    <input onChange={(e) => setUserLastName(e.target.value)} type="text" id="lastname" value={userLastName} />
+                </div>
+                <div>
+                    <button onClick={handleSubmit} className="save-button">Save</button>
+                    <button onClick={() => setEdit(false)} className="cancel-button">Cancel</button>
+                </div>
             </div>
         )
     }

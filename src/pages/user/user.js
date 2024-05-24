@@ -17,7 +17,6 @@ function User(){
         dispatch(postAccount(token))
     })
     
-    console.log(total);
     if(!token){
         return <Navigate to='/sign-in' />
      } else if (total){
