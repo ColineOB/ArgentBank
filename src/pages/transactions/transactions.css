@@ -6,7 +6,7 @@
 }
 
 .transactions table {
-    margin-top: 100px;
+    margin: 100px 0 40px 0;
     width: 90%;
     border-collapse: collapse;
 }

@@ -13,14 +13,23 @@
 }
 
 .header_connexion {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+.header_connexion_button {
     font-weight: bold;
     color: #2c3e50;
     text-decoration: none;
     display: flex;
     align-items: center;
     margin-right: 0.5rem;
+    background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
 
-.header_connexion:hover {
+.header_connexion_button:hover {
     text-decoration: underline;
 }

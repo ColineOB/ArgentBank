@@ -28,9 +28,8 @@ root.render(
             <Route path="/" element={<App />} />
             <Route path='/sign-in' element={<SignIn />} />
             <Route path='/user' element={<User />} />
-            <Route path='/transactions' element={<Transations />}>
+            <Route path='/transactions' element={<Transations />} />
             <Route path='*' element={<NotFound />}/>
-            </Route>
           </Routes>
         <Footer />
       </Router>

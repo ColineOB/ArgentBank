@@ -9,8 +9,8 @@ import { Navigate } from 'react-router-dom'
 function SignIn(){
     const dispatch = useDispatch()
     // state
-    const [username, setUsername] = useState('tony@stark.com');
-    const [password, setPassword] = useState('password123');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     // store
     const token = useSelector((state) => state.login.token);
     const error = useSelector((state) => state.login.error);
